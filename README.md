@@ -32,12 +32,12 @@ Before we write a single line of code, let's write our "specs".  What are we att
 
 Execute the following in your terminal:
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # for Windows, source venv/Scripts/activate
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
+```bash
+python -m venv venv
+source venv/bin/activate  # for Windows, source venv/Scripts/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 ## Scripts
 
