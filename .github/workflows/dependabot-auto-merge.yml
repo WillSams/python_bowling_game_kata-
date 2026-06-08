@@ -1,6 +1,6 @@
 name: Dependabot auto-merge
 
-on: pull_request
+on: pull_request_target
 
 permissions:
   contents: write
@@ -9,13 +9,14 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+          skip-commit-verification: true
       - name: Auto-merge patch and minor updates
         if: >
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
