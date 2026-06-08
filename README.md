@@ -21,12 +21,13 @@ Before we write a single line of code, let's write our "specs".  What are we att
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
 * [Scripts](#scripts)
+* [CI](#ci)
 * [License](#license)
 
 ## Prerequisites
 
 * [Python 3](https://www.python.org/)
-* [pip](https://pip.pypa.io/en/stable/) or [pipenv](https://pipenv.pypa.io/en/latest/)
+* [pip](https://pip.pypa.io/en/stable/)
 
 ## Getting Started
 
@@ -52,6 +53,14 @@ To format code: `./scripts/format.sh`
 To lint: `./scripts/lint.sh`
 
 Note: formatting and linting will occur whenever you commit code via the [pre-commit](https://pypi.org/project/pre-commit/) package.  You can also run these scripts manually to check for issues before committing. There is also configuration to run tests on pre-push in [.pre-commit-config.yaml](./.pre-commit-config.yaml) to block pushes remotely if tests fail locally.
+
+## CI
+
+The project uses GitHub Actions for continuous integration.
+
+- **[pr-validate.yml](./.github/workflows/pr-validate.yml)** — runs on every push and pull request to `main`: installs dependencies, lints with Flake8, and runs the full test suite
+- **[branch-name-check.yml](./.github/workflows/branch-name-check.yml)** — enforces semantic branch naming on pull requests (e.g. `feat/`, `fix/`, `chore/`)
+- **[dependabot.yml](./.github/dependabot.yml)** — automatically opens weekly PRs to keep pip dependencies up to date
 
 ## License
 
